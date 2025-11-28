@@ -724,10 +724,11 @@ function showSuccessMessage() {
 function initializeFloatingBanners() {
     // Rotate webinar topics
     const webinarTopics = [
-        'AI in Modern Development',
+        'Tech Career Guid in 2026',
         'Cybersecurity Essentials',
         'Cloud Computing Fundamentals',
-        'Data Science Basics'
+        'Data Science Basics',
+        'Data Engineer'
     ];
 
     let currentTopicIndex = 0;
@@ -737,7 +738,7 @@ function initializeFloatingBanners() {
         setInterval(() => {
             currentTopicIndex = (currentTopicIndex + 1) % webinarTopics.length;
             webinarTitle.textContent = webinarTopics[currentTopicIndex];
-        }, 4000);
+        }, 2000);
     }
 }
 
