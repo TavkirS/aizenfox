@@ -39,7 +39,7 @@ const coursesData = [
         price: '₹25,000',
         level: 'Beginner to Advanced',
         icon: 'fas fa-code',
-        pdfUrl: 'pdfs/course-info.html',
+        pdfUrl: 'pdfs/baby.pdf',
         features: ['React & Redux', 'Node.js & Express', 'MongoDB', 'REST APIs', 'Deployment']
     },
     {
@@ -51,7 +51,7 @@ const coursesData = [
         price: '₹15,000',
         level: 'Beginner to Advanced',
         icon: 'fab fa-python',
-        pdfUrl: 'pdfs/course-info.html',
+        pdfUrl: 'pdfs/baby.pdf',
         features: ['Data Structures', 'OOP', 'Django', 'Data Science', 'Automation']
     },
     {
@@ -63,7 +63,7 @@ const coursesData = [
         price: '₹30,000',
         level: 'Intermediate',
         icon: 'fas fa-chart-line',
-        pdfUrl: 'pdfs/course-info.html',
+        pdfUrl: 'pdfs/baby.pdf',
         features: ['Pandas & NumPy', 'Matplotlib', 'Machine Learning', 'SQL', 'Tableau']
     },
     {
@@ -75,7 +75,7 @@ const coursesData = [
         price: '₹20,000',
         level: 'Beginner to Intermediate',
         icon: 'fas fa-shield-alt',
-        pdfUrl: 'pdfs/course-info.html',
+        pdfUrl: 'pdfs/baby.pdf',
         features: ['Network Security', 'Ethical Hacking', 'Cryptography', 'Risk Assessment']
     },
     {
@@ -87,7 +87,7 @@ const coursesData = [
         price: '₹18,000',
         level: 'Intermediate',
         icon: 'fab fa-aws',
-        pdfUrl: 'pdfs/course-info.html',
+        pdfUrl: 'pdfs/baby.pdf',
         features: ['EC2 & S3', 'Lambda', 'RDS', 'CloudFormation', 'DevOps']
     },
     {
@@ -99,7 +99,7 @@ const coursesData = [
         price: '₹35,000',
         level: 'Advanced',
         icon: 'fas fa-robot',
-        pdfUrl: 'pdfs/course-info.html',
+        pdfUrl: 'pdfs/baby.pdf',
         features: ['Neural Networks', 'Deep Learning', 'NLP', 'Computer Vision', 'TensorFlow']
     }
 ];
@@ -238,13 +238,6 @@ function scrollToSection(sectionId) {
 
 // Download file
 function downloadFile(url, filename) {
-    // For HTML files, open in new tab instead of downloading
-    if (filename.endsWith('.html') || url.endsWith('.html')) {
-        window.open(url, '_blank');
-        return;
-    }
-
-    // For other files, attempt download
     const link = document.createElement('a');
     link.href = url;
     link.download = filename;
@@ -279,7 +272,7 @@ function toggleBanner(bannerId) {
         if (window.innerWidth <= 768 && floatingBanners) {
             floatingBanners.style.display = 'flex';
         }
-    }, 5000);
+    }, 12000);
 }
 
 // ===== INITIALIZATION =====
@@ -390,8 +383,8 @@ function createCourseCard(course) {
             </div>
             <div class="course-price">${course.price}</div>
             <div class="course-buttons">
-                <button class="btn btn-primary" onclick="downloadFile('${course.pdfUrl}', '${course.title.replace(/\s+/g, '_')}.html')">
-                    <i class="fas fa-info-circle"></i> Info
+                <button class="btn btn-primary" onclick="downloadFile('${course.pdfUrl}', '${course.title.replace(/\s+/g, '_')}.pdf')">
+                    <i class="fas fa-download"></i> PDF
                 </button>
                 <button class="btn btn-outline-primary" onclick="enrollInCourse('${course.id}')">
                     <i class="fas fa-user-plus"></i> Enroll
@@ -750,7 +743,7 @@ function enrollWebinar() {
 }
 
 function downloadWebinarPDF() {
-    downloadFile('pdfs/course-info.html', 'webinar-info.html');
+    downloadFile('pdfs/baby.pdf', 'webinar-info.pdf');
 }
 
 function contactForPerk(perkType) {
@@ -767,12 +760,12 @@ function contactForPerk(perkType) {
 
 function downloadPerkPDF(perkType) {
     const pdfFiles = {
-        'ai-webinar': 'pdfs/course-info.html',
-        'mini-project': 'pdfs/course-info.html',
-        'resume-skills': 'pdfs/course-info.html'
+        'ai-webinar': 'pdfs/baby.pdf',
+        'mini-project': 'pdfs/baby.pdf',
+        'resume-skills': 'pdfs/baby.pdf'
     };
 
-    downloadFile(pdfFiles[perkType], `${perkType}-info.html`);
+    downloadFile(pdfFiles[perkType], `${perkType}-info.pdf`);
 }
 
 // ===== MODALS =====
