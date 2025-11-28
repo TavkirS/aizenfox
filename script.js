@@ -279,7 +279,7 @@ function toggleBanner(bannerId) {
         if (window.innerWidth <= 768 && floatingBanners) {
             floatingBanners.style.display = 'flex';
         }
-    }, 12000);
+    }, 5000);
 }
 
 // ===== INITIALIZATION =====

@@ -1712,11 +1712,12 @@ body {
     }
 
     .floating-banners .left-banner {
-        position: relative;
+        position: absolute;
+        left: 10px; /* Position to the left side */
+        bottom: 20px; /* Position from bottom */
         z-index: 1050;
         max-width: 280px;
-        width: calc(100vw - 20px);
-        margin: 0 0 0 25px; /* Position more to the left */
+        width: calc(100vw - 60px); /* Leave space on right side */
         border-radius: 15px 15px 0 0;
         animation: slideUpMobile 0.4s ease-out;
         box-sizing: border-box;
