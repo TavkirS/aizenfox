@@ -1619,10 +1619,25 @@ body {
         grid-template-columns: 1fr;
     }
 
+    /* Fix mobile header layout */
+    .navbar {
+        position: relative;
+    }
+
+    .navbar-brand {
+        flex: 1;
+    }
+
+    .navbar-toggler {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1030;
+    }
+
     .header-contact {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 1rem;
+        display: none; /* Hide contact info on mobile */
     }
 
     /* Mobile menu background and visibility */
@@ -1701,7 +1716,7 @@ body {
         z-index: 1050;
         max-width: 280px;
         width: calc(100vw - 20px);
-        margin: 0 0 0 15px; /* Position slightly to the left */
+        margin: 0 0 0 25px; /* Position more to the left */
         border-radius: 15px 15px 0 0;
         animation: slideUpMobile 0.4s ease-out;
         box-sizing: border-box;

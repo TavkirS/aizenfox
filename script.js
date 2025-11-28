@@ -272,14 +272,14 @@ function toggleBanner(bannerId) {
         floatingBanners.style.display = 'none';
     }
 
-    // Show again after 5 seconds
+    // Show again after 12 seconds
     setTimeout(() => {
         banner.classList.remove('hidden');
         // Show the container again on mobile
         if (window.innerWidth <= 768 && floatingBanners) {
             floatingBanners.style.display = 'flex';
         }
-    }, 5000);
+    }, 12000);
 }
 
 // ===== INITIALIZATION =====
