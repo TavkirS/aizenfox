@@ -696,13 +696,12 @@ function buildWhatsAppMessage(formData) {
 *Source:* Website Form
 *Timestamp:* ${new Date().toLocaleString()}`;
 
-    return encodeURIComponent(message);
+    return message;
 }
 
 function sendToWhatsApp(message) {
-    // Encode the message properly for URL
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/918888234984?text=${encodedMessage}`;
+    // WhatsApp URLs work better with minimal encoding - just replace spaces and newlines
+    const whatsappUrl = `https://wa.me/918888234984?text=${encodeURIComponent(message).replace(/%0A/g, '%0A').replace(/%20/g, '%20')}`;
 
     try {
         // Try to open WhatsApp directly
@@ -719,7 +718,7 @@ function sendToWhatsApp(message) {
         setTimeout(() => {
             if (!whatsappWindow || whatsappWindow.closed) {
                 console.log('Falling back to email');
-                const mailtoUrl = `mailto:info@shumatrix.com?subject=Admission Inquiry&body=${decodeURIComponent(message)}`;
+                const mailtoUrl = `mailto:info@shumatrix.com?subject=Admission Inquiry&body=${encodeURIComponent(message)}`;
                 window.location.href = mailtoUrl;
             }
         }, 3000); // Increased delay to 3 seconds
@@ -727,7 +726,7 @@ function sendToWhatsApp(message) {
     } catch (error) {
         console.error('Error opening WhatsApp:', error);
         // Immediate fallback to email
-        const mailtoUrl = `mailto:info@shumatrix.com?subject=Admission Inquiry&body=${decodeURIComponent(message)}`;
+        const mailtoUrl = `mailto:info@shumatrix.com?subject=Admission Inquiry&body=${encodeURIComponent(message)}`;
         window.location.href = mailtoUrl;
     }
 
