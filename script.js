@@ -615,10 +615,31 @@ function initializeContactForm() {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
+        // Clear any previous error messages
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+        submitButton.disabled = true;
+
         if (validateForm()) {
-            const formData = new FormData(form);
-            const whatsappMessage = buildWhatsAppMessage(formData);
-            sendToWhatsApp(whatsappMessage);
+            try {
+                const formData = new FormData(form);
+                const whatsappMessage = buildWhatsAppMessage(formData);
+                sendToWhatsApp(whatsappMessage);
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showErrorMessage('Failed to send message. Please try again or contact us directly.');
+            } finally {
+                // Reset button after a delay
+                setTimeout(() => {
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
+                }, 2000);
+            }
+        } else {
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+            showErrorMessage('Please fill in all required fields correctly.');
         }
     });
 }
@@ -647,9 +668,9 @@ function validateForm() {
         isValid = false;
     }
 
-    // Mobile validation
+    // Mobile validation - More flexible to allow international numbers
     const mobile = document.getElementById('mobile').value;
-    const mobileRegex = /^[6-9]\d{9}$/;
+    const mobileRegex = /^[\+]?[\d\s\-\(\)]{10,15}$/; // Allow 10-15 digits with spaces, dashes, parentheses, optional +
     if (mobile && !mobileRegex.test(mobile)) {
         document.getElementById('mobile').classList.add('is-invalid');
         isValid = false;
@@ -679,16 +700,36 @@ function buildWhatsAppMessage(formData) {
 }
 
 function sendToWhatsApp(message) {
-    const whatsappUrl = `https://wa.me/918888234984?text=${message}`;
+    // Encode the message properly for URL
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/918888234984?text=${encodedMessage}`;
 
-    // Try to open WhatsApp
-    window.open(whatsappUrl, '_blank');
+    try {
+        // Try to open WhatsApp directly
+        const whatsappWindow = window.open(whatsappUrl, '_blank');
 
-    // Fallback to mailto if WhatsApp fails
-    setTimeout(() => {
-        const mailtoUrl = `mailto:info@shumatrix.com?subject=Admission Inquiry&body=${message}`;
+        // Check if popup was blocked
+        if (!whatsappWindow || whatsappWindow.closed || typeof whatsappWindow.closed === 'undefined') {
+            // Popup was blocked, try alternative method
+            console.log('WhatsApp popup blocked, trying alternative method');
+            window.location.href = whatsappUrl;
+        }
+
+        // Fallback to email after a longer delay
+        setTimeout(() => {
+            if (!whatsappWindow || whatsappWindow.closed) {
+                console.log('Falling back to email');
+                const mailtoUrl = `mailto:info@shumatrix.com?subject=Admission Inquiry&body=${decodeURIComponent(message)}`;
+                window.location.href = mailtoUrl;
+            }
+        }, 3000); // Increased delay to 3 seconds
+
+    } catch (error) {
+        console.error('Error opening WhatsApp:', error);
+        // Immediate fallback to email
+        const mailtoUrl = `mailto:info@shumatrix.com?subject=Admission Inquiry&body=${decodeURIComponent(message)}`;
         window.location.href = mailtoUrl;
-    }, 1000);
+    }
 
     // Show success message
     showSuccessMessage();
@@ -702,6 +743,25 @@ function showSuccessMessage() {
     alert.innerHTML = `
         <i class="fas fa-check-circle me-2"></i>
         <strong>Success!</strong> Your inquiry has been sent. We'll get back to you soon!
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+
+    document.body.appendChild(alert);
+
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        alert.remove();
+    }, 5000);
+}
+
+function showErrorMessage(message) {
+    // Create error alert
+    const alert = document.createElement('div');
+    alert.className = 'alert alert-danger alert-dismissible fade show position-fixed';
+    alert.style.cssText = 'top: 20px; right: 20px; z-index: 1050; min-width: 300px;';
+    alert.innerHTML = `
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        <strong>Error!</strong> ${message}
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     `;
 
