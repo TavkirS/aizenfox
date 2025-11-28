@@ -189,15 +189,6 @@ const shortReviewsData = [
     }
 ];
 
-// Gallery images
-const galleryImages = [
-    'images/classroom-1.jpg',
-    'images/classroom-2.jpg',
-    'images/workshop-1.jpg',
-    'images/students-1.jpg',
-    'images/campus-1.jpg',
-    'images/event-1.jpg'
-];
 
 // ===== UTILITY FUNCTIONS =====
 
@@ -272,7 +263,7 @@ function toggleBanner(bannerId) {
         if (window.innerWidth <= 768 && floatingBanners) {
             floatingBanners.style.display = 'flex';
         }
-    }, 12000);
+    }, 30000);
 }
 
 // ===== INITIALIZATION =====
@@ -297,7 +288,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCourses();
     initializeTrainers();
     initializeReviews();
-    initializeGallery();
     initializeContactForm();
     initializeFloatingBanners();
     initializeEventListeners();
@@ -553,32 +543,6 @@ function initializeSwipers() {
 }
 
 // ===== GALLERY SECTION =====
-function initializeGallery() {
-    const galleryGrid = document.getElementById('galleryGrid');
-
-    galleryImages.forEach((image, index) => {
-        const galleryItem = document.createElement('div');
-        galleryItem.className = 'gallery-item';
-        galleryItem.setAttribute('data-aos', 'fade-up');
-        galleryItem.setAttribute('data-aos-delay', (index * 100).toString());
-
-        galleryItem.innerHTML = `
-            <img src="${image}" alt="Campus Gallery ${index + 1}" class="gallery-image" loading="lazy">
-            <div class="gallery-overlay">
-                <i class="fas fa-search-plus"></i>
-            </div>
-        `;
-
-        galleryItem.addEventListener('click', () => openLightbox(image));
-        galleryGrid.appendChild(galleryItem);
-    });
-}
-
-function openLightbox(imageSrc) {
-    const lightboxImage = document.getElementById('lightboxImage');
-    lightboxImage.src = imageSrc;
-    showModal('lightboxModal');
-}
 
 // ===== CONTACT FORM =====
 function initializeContactForm() {
