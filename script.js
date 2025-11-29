@@ -31,76 +31,113 @@ const collegesByDistrict = {
 // Courses data
 const coursesData = [
     {
-        id: 1,
-        title: 'Full Stack Web Development',
-        description: 'Complete MERN stack development with React, Node.js, MongoDB and modern tools',
-        category: 'web-development',
-        duration: 'long',
-        price: '₹25,000',
-        level: 'Beginner to Advanced',
-        icon: 'fas fa-code',
-        pdfUrl: 'pdfs/baby.pdf',
-        features: ['React & Redux', 'Node.js & Express', 'MongoDB', 'REST APIs', 'Deployment']
+    "id": 1,
+    "title": "Data Engineer & Analytics",
+    "description": "Complete end-to-end Data Engineering training with Python, SQL, Cloud, Big Data tools, and real-time pipelines.",
+    "category": "data-engineering",
+    "duration": "long",
+    "price": "",
+    "level": "Beginner to Advanced",
+    "icon": "fas fa-database",
+    "pdfUrl": "pdfs/baby.pdf",
+    "features": [
+        "Python for Data Engineering",
+        "Advanced SQL",
+        "ETL & Data Pipelines",
+        "Airflow / Apache NiFi",
+        "Big Data Tools (Hadoop, Spark)",
+        "Cloud (AWS / Azure)",
+        "Real-Time Projects"
+    ]
     },
     {
-        id: 2,
-        title: 'Python Programming Masterclass',
-        description: 'Comprehensive Python programming from basics to advanced concepts',
-        category: 'programming',
-        duration: 'medium',
-        price: '₹15,000',
-        level: 'Beginner to Advanced',
-        icon: 'fab fa-python',
-        pdfUrl: 'pdfs/baby.pdf',
-        features: ['Data Structures', 'OOP', 'Django', 'Data Science', 'Automation']
+    "id": 2,
+    "title": "Zero to Expert in Python",
+    "description": "Master Python from fundamentals to advanced concepts with real-world projects and automation skills.",
+    "category": "programming",
+    "duration": "medium",
+    "price": "",
+    "level": "Beginner to Advanced",
+    "icon": "fab fa-python",
+    "pdfUrl": "pdfs/python_course.pdf",
+    "features": [
+        "Core Python",
+        "Data Structures",
+        "Object-Oriented Programming",
+        "Django & Flask",
+        "Data Science Foundations",
+        "Automation & Scripting",
+        "Real-World Projects"
+    ]
     },
     {
-        id: 3,
-        title: 'Data Science & Analytics',
-        description: 'Learn data analysis, visualization and machine learning with Python',
-        category: 'data-science',
-        duration: 'long',
-        price: '₹30,000',
-        level: 'Intermediate',
-        icon: 'fas fa-chart-line',
-        pdfUrl: 'pdfs/baby.pdf',
-        features: ['Pandas & NumPy', 'Matplotlib', 'Machine Learning', 'SQL', 'Tableau']
+    "id": 3,
+    "title": "SQL Beginner to Advanced",
+    "description": "Master SQL from basics to advanced level with real-world queries, joins, optimization, and data analytics.",
+    "category": "database",
+    "duration": "long",
+    "price": "",
+    "level": "Beginner to Advanced",
+    "icon": "fas fa-database",
+    "pdfUrl": "pdfs/sql_course.pdf",
+    "features": [
+        "SQL Basics",
+        "Joins & Subqueries",
+        "Stored Procedures & Functions",
+        "Indexes & Query Optimization",
+        "Data Analytics with SQL",
+        "Advanced SQL Concepts",
+        "Real-World Projects"
+    ]
     },
     {
-        id: 4,
-        title: 'Cyber Security Fundamentals',
-        description: 'Essential cybersecurity skills for protecting digital assets',
-        category: 'cyber-security',
-        duration: 'medium',
-        price: '₹20,000',
-        level: 'Beginner to Intermediate',
-        icon: 'fas fa-shield-alt',
-        pdfUrl: 'pdfs/baby.pdf',
-        features: ['Network Security', 'Ethical Hacking', 'Cryptography', 'Risk Assessment']
+    "id": 4,
+        "title": "Databricks Fundamentals with Apache Spark",
+        "description": "Learn how to process data using Databricks & Apache Spark - DataFrame API and Spark SQL",
+        "category": "cloud-computing",
+        "duration": "medium",
+        "price": "",
+        "level": "Beginner to Intermediate",
+        "icon": "fas fa-layer-group",
+        "pdfUrl": "pdfs/aws_course.pdf",
+        "features": [
+            "Lakehouse core fundamentals",
+            "unity catalog",
+            "Databricks workflow",
+            "job schedule"
+        ]
     },
     {
-        id: 5,
-        title: 'Cloud Computing with AWS',
-        description: 'Master Amazon Web Services and cloud architecture',
-        category: 'cloud-computing',
-        duration: 'medium',
-        price: '₹18,000',
-        level: 'Intermediate',
-        icon: 'fab fa-aws',
-        pdfUrl: 'pdfs/baby.pdf',
-        features: ['EC2 & S3', 'Lambda', 'RDS', 'CloudFormation', 'DevOps']
+    "id": 5,
+        "title": "AWS Fundamentals Specialization",
+        "description": "AWS Lambda,AWS Glue,EC2,Solution Architecture,Amazon S3,Amazon CloudWatch,Serverless Computing,AWS Identity and Access Management (IAM)",
+        "category": "cloud-computing",
+        "duration": "medium",
+        "price": "",
+        "level": "Beginner to Intermediate",
+        "icon": "fab fa-aws",
+        "pdfUrl": "pdfs/aws_course.pdf",
+        "features": [
+            "EC2, S3 & IAM",
+            "Serverless with Lambda",
+            "RDS & DynamoDB",
+            "VPC & Networking",
+            "CloudFormation",
+            "DevOps & CI/CD Basics",
+            "Real-World Deployments"
+        ]
     },
     {
         id: 6,
-        title: 'AI & Machine Learning',
-        description: 'Deep dive into artificial intelligence and machine learning algorithms',
+        title: 'Machine Learning Masterclass',
+        description: 'Deep dive into machine learning algorithms',
         category: 'data-science',
-        duration: 'long',
-        price: '₹35,000',
+        duration: 'short',
+        price: '',
         level: 'Advanced',
         icon: 'fas fa-robot',
         pdfUrl: 'pdfs/baby.pdf',
-        features: ['Neural Networks', 'Deep Learning', 'NLP', 'Computer Vision', 'TensorFlow']
+        features: ['Master in ML']
     }
 ];
 

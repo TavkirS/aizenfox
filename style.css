@@ -26,6 +26,30 @@
     --border-color: rgba(0, 255, 255, 0.2);
 }
 
+/* ===== MOBILE PRELOADER FIX ===== */
+@media (max-width: 768px) {
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: var(--dark-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .preloader-content {
+        position: relative;
+        width: 90%;
+        max-width: 280px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+}
+
 /* ===== RESET & BASE STYLES ===== */
 * {
     margin: 0;
@@ -68,6 +92,9 @@ body {
 .preloader-content {
     text-align: center;
     color: var(--primary-color);
+    width: 100%;
+    max-width: 300px;
+    padding: 0 20px;
 }
 
 .tech-grid {
